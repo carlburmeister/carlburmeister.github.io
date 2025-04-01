@@ -1,0 +1,35 @@
+#resume_table{
+	position: absolute;
+	top: 10%;
+	width: 100%;
+}
+#resume_table td{
+	padding: .5%;
+}
+#resume_table .title{
+	font-size: 110%;
+	text-align: center; 
+}
+#resume_table .header{
+	font-size: 90%;
+}
+#resume_table .normal{
+	font-size: 80%;
+}
+#resume_table .indent{
+	width: 2%;
+}
+#resume_table .left{
+	height: 4%;
+	width: 10%;
+	vertical-align: text-top;
+}
+#resume_table .right{
+	width: 85%;
+}
+#resume_table .spacer{
+	height: 3%;
+}
+
+
+

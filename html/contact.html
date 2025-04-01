@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name=viewport content="width=device-width, initial-scale=1">
+<title>Carl Burmeister - Contact</title>
+
+	<link href="../css/main.css" rel="stylesheet" type="text/css">
+	<link href="../css/buttons.css" rel="stylesheet" type="text/css">
+
+	<link media="only screen and (min-device-width:320px) and (max-device-width:800px)" href="../css/main_tablet.css" rel="stylesheet" />
+	<link media="only screen and (min-device-width:320px) and (max-device-width:800px)" href="../css/buttons_index_tablet.css" rel="stylesheet"/>	
+
+	<!--[if gte IE 9]>
+	<!-- iphone Portrait/Landsape -->
+	<link media="only screen and (min-device-width:320px) and (max-device-width:480px)" href="../css/main_iphone.css" rel="stylesheet" />
+	<link media="only screen and (min-device-width:320px) and (max-device-width:480px)" href="../css/buttons_iphone.css" rel="stylesheet"/>	
+	<![endif]-->
+
+	<script type="text/javascript" src="../js/utility.js" charset="utf-8"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" charset="utf-8"></script> 
+
+	<style type="text/css">
+		
+		#email {
+			position: absolute;
+			width: 90%;
+			left: 5%;
+			top: 20%;
+			font-size: 80%;
+			text-align: center;
+		}
+		#email a:link{
+			 color: #BE1014;
+			 text-decoration: none;
+		}
+		#email a:visited{
+			color: #BE1014;
+			text-decoration: none;
+		}
+		#email a:hover{
+			color: #FF6666;
+		}
+		#email a:active{
+			text-decoration: none;
+	}
+	</style>	
+
+</head>
+<body>
+
+<div id="mainLayer"> 
+
+	<div id="navigationBlock">
+		<table id="navigationTable">
+			<tr>
+				<td class="navigationItem"><a href="../index.html">Home</a></td>
+				<td>&nbsp;</td>
+				<td class="navigationItem"><a href="thumbs.html">Work</a></td>
+				<td>&nbsp;</td>
+				<td class="navigationItem"><a href="info.html">Info</a></td>
+				<td>&nbsp;</td>
+				<td class="navigationItem"><a href="contact.html">Contact</a></td>
+			</tr>
+		</table>
+	</div>
+		
+</div>
+
+ <div id="email">For more information please email me at <a href="mailto:carl@carlburmeister.net">carl@carlburmeister.net</a>.</div>
+
+
+<script>
+	$(document).ready(function () {
+
+		var is_mobile = false;
+		
+		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) 
+		{
+			is_mobile = true;
+			
+			var window_width = $(window).width();
+			
+			if(window_width <= 320){
+			
+				$('#navigationBlock').css({ fontSize: '66%', width: '90%', left: '5%' });
+				$('#email').css({ fontSize: '50%', top:'25%' });
+			}
+			else{	
+				$('#email').css({ fontSize: '80%', top:'25%' });				
+			}
+			
+			$('#mainLayer').css({ visibility: 'visible' });
+			
+			updateOrientation();
+
+		}
+		else{
+			
+			$('#navigationBlock').css({	left: '30%'	});	
+			
+			//max_main_layer_width (used in setMainLayerMaxWidth()) is a global set at the top if utility.js
+			setMainLayerMaxWidth();
+			centerMainLayerOnPage();
+		}
+		
+	});	
+</script>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+#zoomSmallImage{
+	display: none;
+	position: absolute;
+	/* z-index: 1; */
+}
+#zoomControlScreen{
+	position: absolute; 	
+	/* HAD TO SET A BACKGROUND-COLOR WITH OPACITY = 0 FOR MOUSEOVER TO TRIGGER CONTROL SCREEN IN IE8 */
+	background-color: green;
+	opacity: 0.0;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+	cursor: none;
+	z-index: 15;
+}
+#zoomLens{
+	position: absolute;
+	display: none;
+	background-color: #000000;
+	opacity: 0.1;
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=10)";
+	filter: alpha(opacity=10);
+	width: 50px;
+	height: 50px;
+	z-index: 2;
+}
+#zoomBigImageCircle{
+	position: absolute;
+	top: -1200px;
+	left: 0px;
+	height: 300px;
+	width: 300px;
+	border: 2px solid red;
+	border-radius: 175px;
+	-moz-border-radius: 175px;
+	/* background-image: url(''); */ /*set dynamically in js */
+	background-repeat: no-repeat;
+	z-index: 10;
+}
+#coords{
+	position: absolute;
+	top: 10px;
+	left: 10px;
+}
+#innerRect{
+	position: absolute;
+	border: 2px;
+}

@@ -1,0 +1,79 @@
+
+
+#fullButton{
+	z-index: 0;
+}
+#detailButton{
+	margin-top: 1.8%;
+	display: none;
+	z-index: 0;
+}
+#videoButton{
+	margin-top: 1.8%;
+	display: none;
+	z-index: 0;
+}
+#videoDetailButton{
+	margin-top: 1.8%;
+	display: none;
+	z-index: 0;
+}
+#audioButton{
+	margin-top: 1.8%;
+	display: none;
+	z-index: 0;
+}
+#zoomEnableButton{
+	display: none;
+	margin-top: 1.8%;
+	z-index: 0;
+}
+
+.buttonLink {
+	font-size: 75%;
+	color: #333333;
+}
+
+/*
+.buttonLink.buttonLeft {
+	position: absolute;
+	text-align: center;
+	width: 25%;
+	left: 15%;
+
+}
+.buttonLink.buttonRight {
+	position: absolute;
+	text-align: center;
+	width: 25%;
+	top: 0%;
+	left: 50%;
+}
+*/
+
+.buttonLink:hover {
+	color: #FF6666;
+	cursor: pointer;
+}
+
+
+
+.navigationItem{
+	font-size: 75%;
+	color: #000000;
+	width: 15%;
+}
+.navigationItem a:link{
+     color: #000000;
+     text-decoration: none;
+}
+.navigationItem a:visited{
+	color: #000000;
+	text-decoration: none;
+}
+.navigationItem a:hover{
+	color: #FF6666;
+}
+.navigationItem a:active{
+	text-decoration: none;
+}

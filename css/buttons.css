@@ -1,0 +1,67 @@
+
+.buttonLink {
+	font-size: 75%;
+	color: #333333;
+}
+
+.buttonLink:hover {
+	color: #FF6666;
+	cursor: pointer;
+}
+
+#fullButton{
+	z-index: -10;
+}
+#detailButton{
+	margin-top: 2%;
+	display: none;
+	z-index: -10;
+}
+#videoButton{
+	margin-top: 2%;
+	display: none;
+	z-index: -10;
+}
+#videoDetailButton{
+	margin-top: 2%;
+	display: none;
+	z-index: -10;
+}
+#audioButton{
+	margin-top: 2%;
+	display: none;
+	z-index: -10;
+}
+#zoomEnableButton{
+	display: none;
+	margin-top: 2%;
+	z-index: -10;
+}
+.navigationItem{
+	font-size: 80%;
+	color: #000000;
+	width: 15%;
+}
+.navigationItem a:link{
+     color: #000000;
+     text-decoration: none;
+}
+.navigationItem a:visited{
+	color: #000000;
+	text-decoration: none;
+}
+.navigationItem a:hover{
+	color: #FF6666;
+}
+.navigationItem a:active{
+	text-decoration: none;
+}
+.align_left{
+	text-align: left;
+}
+.align_center{
+	text-align: center;
+}
+.align_right{
+	text-align: right;
+}
