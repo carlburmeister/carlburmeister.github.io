@@ -1,0 +1,17 @@
+Miro Video Converter makes crappy .avi to .ogv conersions!
+Use firefogg.
+Open Firefox and go to http://firefogg.org/.
+Install the add-on if necesary and restart FF.
+Select 'Make web video'.
+Choose 'Advanced Options...'
+
+Format: Ogg
+Size: 640 x 480
+Framerate: (leave blank)
+Aspect Ratio: (leave blank)
+Quality: 9
+2 pass encoding (Bitrate auto sets to 1000 kb/s)
+
+Audio:
+	mono
+	44.1 kHz	
