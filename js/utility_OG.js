@@ -12,18 +12,19 @@ function sendData(id, option)
 	{
 		var browser = getBrowserVersion();		
 		
-		
-		if(option === 'from_index')
-			window.location="html/CarlBurmeister.html?" + id;
-		else 
-			window.location="CarlBurmeister.html?" + id;
-		/*
-		if(option === 'from_index')
-			window.location = "html/art_pages/" + id + ".html?" + id;
-		else 
-			window.location = "art_pages" + id + ".html?" + id;
-		*/
-
+		if (browser.name == 'msie' && browser.version < 8){
+			if(option === 'from_index')
+				window.location="html/CarlBurmeister.ie.html?" + id;
+			 else 
+				window.location="CarlBurmeister.ie.html?" + id;
+		}
+		else{
+			if(option === 'from_index')
+				window.location="html/CarlBurmeister.html?" + id;
+			 else 
+				window.location="CarlBurmeister.html?" + id;
+			
+		}
 	}
 	
 //////////////////////////////////////////////////////////////////////////////////////////////////

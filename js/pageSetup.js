@@ -9,7 +9,11 @@ var loResImagesPath 		= "../../media/images/lo_res/";
 var hiResImagesPath 		= "../../media/images/hi_res/";
 var videoPath 				= "../../media/video/";
 var audioPath 				= "../../media/audio/";
-var phpPath 				= "../php/";
+
+//var dataFileRelativeToJs	= "../data/artInfo_09-08-20.csv";
+var dataFileRelativeToJs	= "../data/artInfo_11-08-2025.csv";
+var dataCsvPath 			= resolveDataCsvPath(dataFileRelativeToJs);
+
 var browser 				= getBrowserVersion();
 var fadeSpeed				= 500;
 var default_video_width		= 640;
@@ -323,9 +327,7 @@ function preLoad(){
 function preLoadImages()
 {	
 	pieceId = getId();
-	docToGet = phpPath + 'getData.php?q='+ pieceId;	
-	xmlDoc = loadXMLDoc(docToGet);
-	pageAssets = $.xml2json(xmlDoc);
+	pageAssets = loadPieceAssetsFromCsv(pieceId);
 
 	//TEST FOR EXISTENCE OF DOM 'IMAGES' ARRAY THAT ALLOWS PRELOADING
 	if(document.images) 
@@ -660,8 +662,8 @@ function doPageSetup(pageAssets)
 	$('#titlesContainer').css('visibility', 'visible').hide().fadeIn(fadeSpeed);
 	$("#linksBlock").css('visibility', 'visible').hide().fadeIn(fadeSpeed);
 	$("#thumbnailScroller").css('visibility', 'visible').hide().fadeIn(fadeSpeed);
-	
-	
+
+
 	$('#mainLayer').css({ visibility: 'visible' });
 
 }// End doPageSetup()
