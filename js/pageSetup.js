@@ -33,9 +33,11 @@ $(document).ready(function () {
 	
 	
 	//http://stackoverflow.com/questions/3514784/what-is-the-best-way-to-detect-a-mobile-device-in-jquery
-	if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+	//if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) 
+	if( isMobile() )
+	{
 	 	is_mobile = true;
-console.log('is_mobile = ' + is_mobile);
+		console.log('is_mobile = ' + is_mobile);
 	}
 	
 	if(is_mobile)
@@ -65,6 +67,7 @@ console.log('is_mobile = ' + is_mobile);
 					touchStarted = true;
 					
 					// detecting if after 200ms the finger is still in the same position
+					/*
 					setTimeout(function (){
 						if ((cachedX === currX) && !touchStarted && (cachedY === currY)) {
 							// Here you get the Tap event
@@ -72,6 +75,34 @@ console.log('is_mobile = ' + is_mobile);
 							setTimeout(function(){ sendData( $touchArea.attr('id') ); }, 100 );
 						}
 					},200);
+					*/
+
+					// detecting if after 120ms the finger is still in the same position
+					setTimeout(function ()
+					{
+						console.log('x==>'+ parseInt(cachedX)+':'+ parseInt(currX) + '  y==>'+ parseInt(cachedY)+':'+ parseInt(currY) );
+						
+						var tolerance = 5;
+						var cachedX_min = parseInt(cachedX) - tolerance;
+						var cachedX_max = parseInt(cachedX) + tolerance;
+						var cachedY_min = parseInt(cachedY) - tolerance;
+						var cachedY_max = parseInt(cachedY) + tolerance;
+						currX 			= parseInt(currX);
+						currY 			= parseInt(currY);
+						
+						//if( (cachedX === currX) && !touchStarted && (cachedY === currY) ) 
+						if( !touchStarted && 
+							( cachedX_min <= currX && cachedX_max >= currX ) &&
+							( cachedY_min <= currY && cachedY_max >= currY ) 
+						) 
+						{
+							// Here you get the Tap event
+							//alert($touchArea.attr('id') + ' Tap');
+							setTimeout(function(){ sendData( $touchArea.attr('id') ); }, 100 );
+						}
+					}, 120);
+
+
 				});
 				$touchArea.on('touchend mouseup touchcancel',function (e){
 					e.preventDefault();
@@ -485,6 +516,20 @@ function doPageSetup(pageAssets)
 	$('#titles').html(pieceTitle);
 	$('#materials').html(materials);
 	
+	var status = pageAssets['status'];
+	if( status == 'available' )
+	{
+		//$('#status').addClass('dot-available');
+	}
+	else if( status == 'disassembled' || status == 'contingent' )
+	{
+		$('#status').addClass('dot-disassembled');
+	}
+	else
+	{
+		$('#status').addClass('dot-unavailable');
+	}
+
 	//Moving this to end of function...
 	//$('#titlesContainer').css('visibility', 'visible').hide().fadeIn(fadeSpeed);
 
@@ -656,8 +701,29 @@ function doPageSetup(pageAssets)
 	///////////////////////////////////////////////////////////////////////////////////////////////////	
 
 	// SET CSS FOR INITIAL ORIENTATION ON LOAD
+	// NOTE: onorientationchange listener is attached to <body> el of CarlBurmeister.html and info.html
+	/*
 	if(is_mobile)	
 		updateOrientation();
+	*/
+	if(is_mobile)
+	{
+		console.log('doPageSetup(): window.location.search = ' + window.location.search);
+		
+		updateOrientation(true);
+		
+		/*
+		let params = new URLSearchParams( window.location.search );
+		
+		console.log('params = ', params);
+		console.log('params.uo = ' + params.get("uo"));
+		
+		if( params.get("uo") == undefined ) {
+			updateOrientation(true);
+		}
+		//*/
+	}
+
 
 	$('#titlesContainer').css('visibility', 'visible').hide().fadeIn(fadeSpeed);
 	$("#linksBlock").css('visibility', 'visible').hide().fadeIn(fadeSpeed);

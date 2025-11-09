@@ -1,6 +1,33 @@
+#status_info {
+	position: absolute;
+	font-size: 70%;
+	width: 100%;
+	top: 12%
+}
+.status_title {
+	position: absolute;
+	font-size: 140%;
+	text-align: center;
+	width: 50%;
+	left: 25%;
+}
+.status_content {
+	position: absolute;
+	padding-top: 30px;
+    width: 100%;
+}
+.status_line {
+	margin-bottom: 10px;
+}
+.status_vertical_align {
+    position: absolute;
+    padding-top: 2px;
+    left: 4%;
+}
+
 #resume_table{
 	position: absolute;
-	top: 10%;
+	top: 40%;
 	width: 100%;
 }
 #resume_table td{

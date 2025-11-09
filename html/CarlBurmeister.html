@@ -27,6 +27,8 @@
 	
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" charset="utf-8"></script> 	
 	<script type="text/javascript" src="../js/jquery.xml2json.js" charset="utf-8"></script>
+	
+	<script type="text/javascript" src="../js/mobile_detect.js" charset="utf-8"></script>
 	<script type="text/javascript" src="../js/utility.js" charset="utf-8"></script>
 
 	<script type="text/javascript" src="../../js/csvParse.js" charset="utf-8"></script>
@@ -46,6 +48,7 @@
 
 <div id="mainLayer">
 
+	<!--
 	<div id="navigationBlock">
 		<table id="navigationTable">
 			<tr>
@@ -59,10 +62,30 @@
 			</tr>
 		</table>
 	</div>
+	-->
+
+	<div id="navigationBlock">
+		<table id="navigationTable">
+			<tr>
+				<td class="navigationItem"><a href="../index.html">Home</a></td>
+				<td>&nbsp;</td>
+				<td class="navigationItem"><a href="thumbs.html">All Work</a></td>
+				<td>&nbsp;</td>
+				<td class="navigationItem"><a href="FP_series.html">F.P. Work</a></td>
+				<td>&nbsp;</td>
+				<td class="navigationItem"><a href="AL_series.html">A.L. Work</a></td>
+				<td>&nbsp;</td>
+				<td class="navigationItem"><a href="info.html">Info</a></td>
+				<td>&nbsp;</td>
+				<td class="navigationItem"><a href="contact.html">Contact</a></td>
+			</tr>
+		</table>
+	</div>
 
 	<div id="titlesContainer">
 		<div id="titles"></div>
 		<div id="materials" class="materials"></div>
+		<div id="status">&nbsp;</div>
 	</div>	
 
 	<div id="linksBlock">
@@ -158,6 +181,53 @@
 	
 	<script src="../js/jquery-mousewheel-3.0.6/jquery.mousewheel.min.js" type="text/javascript"></script>
 	<script src="../js/jquery.kinetic.js" type="text/javascript"></script>
+
+	<script>
+		$(document).ready(function () {
+			
+			var is_mobile = false;
+			
+			var window_width = $(window).width();
+			var main_layer_width = $('#mainLayer').width();
+			
+			if( isMobile() ) 
+			{
+				is_mobile = true;
+				
+				$('#mainLayer').css({ visibility: 'visible' });
+				
+				$('#navigationBlock').css({ width: '98%', left: '1%', fontSize: '70%' });
+				//$('#navigationItem').css({ fontSize: '40%' });	
+				
+				/*
+				first_img = $('img').get(0);
+				console.log(first_img.width);
+				thumb_width = first_img.width
+				thumb_width = .19 * window_width;
+				console.log('thumb_width = ' + thumb_width);
+				$('img').css({ width: thumb_width });			
+				
+				$('#thumbs_table').css({  left: '2.5%', });
+				$('#thumbs_table').attr('cellspacing', '0px');
+				$('#thumbs_table').attr('cellpadding', '0px');
+				
+	
+				
+				updateOrientation();
+				*/
+			}
+			else
+			{
+				/*
+				$('#navigationBlock').css({ left: '20%' });
+				//max_main_layer_width (used in setMainLayerMaxWidth()) is a global set at the top if utility.js
+				setMainLayerMaxWidth();
+				centerMainLayerOnPage();
+				*/
+			}
+			
+		});	
+	</script>
 
 </body>
 </html>

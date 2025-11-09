@@ -17,6 +17,7 @@
 	<link media="only screen and (min-device-width:320px) and (max-device-width:480px)" href="../css/buttons_iphone.css" rel="stylesheet"/>	
 	<![endif]-->	
 	
+	<script type="text/javascript" src="../js/mobile_detect.js" charset="utf-8"></script>
 	<script type="text/javascript" src="../js/utility.js" charset="utf-8"></script>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" charset="utf-8"></script>
 
@@ -26,6 +27,7 @@
 		
 <div id="mainLayer"> 
 
+	<!--
 	<div id="navigationBlock">
 		<table id="navigationTable">
 			<tr>
@@ -38,8 +40,41 @@
 				<td class="navigationItem"><a href="contact.html">Contact</a></td>
 			</tr>
 		</table>
+	</div>
+	-->
+	<div id="navigationBlock">
+		<table id="navigationTable">
+			<tr>
+				<td class="navigationItem"><a href="../index.html">Home</a></td>
+				<td>&nbsp;</td>
+				<td class="navigationItem"><a href="thumbs.html">All Work</a></td>
+				<td>&nbsp;</td>
+				<td class="navigationItem"><a href="FP_series.html">F.P. Work</a></td>
+				<td>&nbsp;</td>
+				<td class="navigationItem"><a href="AL_series.html">A.L. Work</a></td>
+				<td>&nbsp;</td>
+				<td class="navigationItem"><a href="info.html">Info</a></td>
+				<td>&nbsp;</td>
+				<td class="navigationItem"><a href="contact.html">Contact</a></td>
+			</tr>
+		</table>
 	</div>		
 		
+	<div id="status_info">
+		<div class="status_title">Piece Status</div>
+		<div class="status_content">
+			<div class="status_line">
+				<span class="dot-available" style="background-color:rgba(25,224,25,0.0);"></span><span class="status_vertical_align"> Pieces with no dot are available.</span>
+			</div>
+			<div class="status_line">
+				<span class="dot-unavailable"></span><span class="status_vertical_align"> Pieces marked with a red dot are sold or unavailable.</span>
+			</div>
+			<div class="status_line">
+				<span class="dot-disassembled"></span><span class="status_vertical_align"> Pieces marked with and orange dot are available with special considerations.</span>
+			</div>
+		</div>
+	</div>
+
 			
 	<table id="resume_table">
 		
@@ -199,16 +234,19 @@
 		var window_width = $(window).width();
 		var main_layer_width = $('#mainLayer').width();
 		
-		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+		//if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) )
+		if( isMobile() ) 
 		{
 			is_mobile = true;			
 
-console.log('main_layer_width = '+ main_layer_width + ' window_width = '  + window_width);
+			console.log('main_layer_width = '+ main_layer_width + ' window_width = '  + window_width);
 
 			$('#mainLayer').css({ visibility: 'visible' });
 			$('#mainLayer').css({ left: (window_width - main_layer_width)/2 });
 			
+			$('#navigationBlock').css({ width: '98%', left: '1%', fontSize: '52%' });
 			
+			/*
 			if(window_width <= 320 )
 			{
 				$('#navigationBlock').css({ fontSize: '66%', width: '90%', left: '5%' });
@@ -216,22 +254,44 @@ console.log('main_layer_width = '+ main_layer_width + ' window_width = '  + wind
 			}
 			else
 			{
-				$('#resume_table').css({ fontSize: '80%', width: '80%',
-											//left: (main_layer_width - resume_table_width)/2
-									});
-				$('#resume_table .left').css({ width: '12%' });
-				var resume_table_width = $('#resume_table').width();
-				$('#resume_table').css({ left: (main_layer_width - resume_table_width)/2 });
-			}			
+			*/
+				switch(window.orientation)
+				{	
+					case 0: case 180:
+						$('.status_title').css({ fontSize: '70%' });
+						$('.status_content').css({ fontSize: '50%' });
+						$('.status_line').css({ marginLeft: '1%', marginBottom: '20px' });
+						$('.status_vertical_align').css({ left: '10%', paddingTop: '0px' });
+						
+						$('#resume_table').css({ fontSize: '50%', width: '80%', top: '35%' });
+						$('#resume_table .left').css({ width: '12%' });
+						var resume_table_width = $('#resume_table').width();
+						$('#resume_table').css({ left: (main_layer_width - resume_table_width)/2 });
+					break;
+					case 90: case -90:
+						$('.status_title').css({ fontSize: '70%' });
+						$('.status_content').css({ fontSize: '50%' });
+						$('.status_line').css({ marginLeft: '1%', marginBottom: '10px' });
+						$('.status_vertical_align').css({ left: '10%', paddingTop: '2px' });
+						
+						$('#resume_table').css({ fontSize: '50%', width: '80%', top: '37%' });
+						$('#resume_table .left').css({ width: '12%' });
+						var resume_table_width = $('#resume_table').width();
+						$('#resume_table').css({ left: (main_layer_width - resume_table_width)/2 });
+					break;
+				}
+			//}			
 			
+			// Don't need this if reloading page in utility.js::updateOrientation(is_page_setup)
+			// NOTE: onorientationchange listener is attached to <body> el of CarlBurmeister.html and info.html
+			//updateOrientation(true);
 			
-			updateOrientation();
 		}
-		else{
+		else
+		{	
+			//$('#navigationBlock').css({	left: '15%'	});	
 			
-			$('#navigationBlock').css({	left: '30%'	});	
-			
-			//max_main_layer_width (used in setMainLayerMaxWidth()) is a global set at the top if utility.js
+			//Set max_min_layer_width (used in setMainLayerMaxWidth()) is a global set at the top if utility.js
 			setMainLayerMaxWidth();
 			centerMainLayerOnPage();
 		}
