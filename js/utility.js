@@ -666,6 +666,7 @@ function setMainLayerMaxWidth(){
 	return max_main_layer_width;
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////
+/*
 function centerMainLayerOnPage(){
 	
 	var window_width 		= $(window).width();
@@ -693,6 +694,28 @@ function centerMainLayerOnPage(){
 	});
 	
 }
+*/
+function centerMainLayerOnPage() {
+    var $win  = $(window);
+    var $mainLayer = $('#mainLayer');
+
+    function update() {
+        var window_width     = $win.width();
+        var main_layer_width = $mainLayer.width();
+
+        // $(window).width() already excludes the scrollbar, so this keeps centering accurate
+        var marginLeft = (window_width - main_layer_width) / 2;
+
+        $mainLayer.css({ marginLeft: marginLeft });
+    }
+
+    // Run once now
+    update();
+
+    // Run on resize
+    $win.resize(update);
+}
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
 //	http://stackoverflow.com/questions/13382516/getting-scroll-bar-width-using-javascript
