@@ -11,7 +11,7 @@ var videoPath 				= "../../media/video/";
 var audioPath 				= "../../media/audio/";
 
 //var dataFileRelativeToJs	= "../data/artInfo_09-08-20.csv";
-var dataFileRelativeToJs	= "../data/artInfo_11-08-2025.csv";
+var dataFileRelativeToJs	= "../data/artInfo_11-09-2025.csv";
 var dataCsvPath 			= resolveDataCsvPath(dataFileRelativeToJs);
 
 var browser 				= getBrowserVersion();
