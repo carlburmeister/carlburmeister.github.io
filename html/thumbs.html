@@ -518,9 +518,12 @@ console.log('thumb_width = ' + thumb_width);
 			$('#thumbs_table').attr('cellspacing', '0px');
 			$('#thumbs_table').attr('cellpadding', '0px');
 			
-
 			
-			updateOrientation();
+			//updateOrientation();
+			// Run immediately, then once more after a short delay so the viewport
+			// dimensions from the new orientation are available for centering.
+			applyOrientationLayout();
+			setTimeout(applyOrientationLayout, 200);
 			
 		}
 		else{

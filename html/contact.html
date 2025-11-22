@@ -98,7 +98,11 @@
 			
 			$('#mainLayer').css({ visibility: 'visible' });
 			
-			updateOrientation();
+			//updateOrientation();
+			// Run immediately, then once more after a short delay so the viewport
+			// dimensions from the new orientation are available for centering.
+			applyOrientationLayout();
+			setTimeout(applyOrientationLayout, 200);
 
 		}
 		else{
