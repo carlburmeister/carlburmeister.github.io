@@ -133,7 +133,12 @@ console.log('device is mobile');
 	
 	if(is_mobile){
 	
-		updateOrientation();
+		//updateOrientation();
+		// Run immediately, then once more after a short delay so the viewport
+		// dimensions from the new orientation are available for centering.
+		applyOrientationLayout();
+		setTimeout(applyOrientationLayout, 200);
+
 		$('#mainLayer').css({ visibility: 'visible' });
 	
 	}

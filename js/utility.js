@@ -431,6 +431,7 @@ function setImageBlockWidthMobile(el){
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////
+/*
 function updateOrientation(){
 
 	var el = '';
@@ -548,6 +549,97 @@ function updateOrientation(){
 		break;
 	}
 
+
+}
+*/
+function applyOrientationLayout() {
+    var window_height = $(window).height();
+    var window_width = $(window).width();
+    var imageBlockHeight = $('#imageBlock').height();
+
+	//console.log('window_width = ' + window_width + ', window_height = ' + window_height + ', imageBlockHeight = ' + imageBlockHeight );
+
+    // Helper to replace deprecated window.orientation
+	function getOrientationAngle() {
+		if (screen.orientation && typeof screen.orientation.angle === "number") {
+			return screen.orientation.angle;
+		}
+
+		// iOS fallback (no Screen Orientation API)
+		const isPortrait = window.matchMedia("(orientation: portrait)").matches;
+		return isPortrait ? 0 : 90;
+	}
+
+	const orientation = getOrientationAngle();
+
+	switch (orientation) {
+		case 0:
+			$('#mainLayer').css({ height: window_height });
+			$('body').css({ fontSize: '150%' });
+
+			switch (el) {
+				case 'fullview':
+					setImageBlockWidth(preloadedImages['fullview']);
+					break;
+				case 'detail':
+					setImageBlockWidth(preloadedImages[el_str]);
+					break;
+				case 'video1':
+					setImageBlockWidth($('#video1').get(0));
+					break;
+				case 'video2':
+					setImageBlockWidth($('#video2').get(0));
+					break;
+			}
+
+			setLowerElements(orientation);
+			break;
+
+		case 90: // landscape primary (iOS fallback may also map here)
+		case 270: // landscape secondary
+			$('#mainLayer').css({ height: window_height });
+
+			switch (el) {
+				case 'fullview':
+					setImageBlockWidth(preloadedImages['fullview']);
+					break;
+				case 'detail':
+					setImageBlockWidth(preloadedImages[el_str]);
+					break;
+				case 'video1':
+					setImageBlockWidth($('#video1').get(0));
+					break;
+				case 'video2':
+					setImageBlockWidth($('#video2').get(0));
+					break;
+			}
+
+			var img_blk_ht = $('#imageBlock').outerHeight(true);
+			setLowerElements(orientation, img_blk_ht);
+			break;
+
+		case 180:
+			$('#mainLayer').css({ height: window_height });
+			$('body').css({ fontSize: '150%' });
+
+			switch (el) {
+				case 'fullview':
+					setImageBlockWidth(preloadedImages['fullview']);
+					break;
+				case 'detail':
+					setImageBlockWidth(preloadedImages[el_str]);
+					break;
+				case 'video1':
+					setImageBlockWidth($('#video1').get(0));
+					break;
+				case 'video2':
+					setImageBlockWidth($('#video2').get(0));
+					break;
+			}
+
+			setLowerElements(orientation);
+			break;
+	}
 
 }
 

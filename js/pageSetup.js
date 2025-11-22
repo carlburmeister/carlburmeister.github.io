@@ -710,7 +710,11 @@ function doPageSetup(pageAssets)
 	{
 		console.log('doPageSetup(): window.location.search = ' + window.location.search);
 		
-		updateOrientation(true);
+		//updateOrientation(true);
+		// Run immediately, then once more after a short delay so the viewport
+		// dimensions from the new orientation are available for centering.
+		applyOrientationLayout();
+		setTimeout(applyOrientationLayout, 200);
 		
 		/*
 		let params = new URLSearchParams( window.location.search );
