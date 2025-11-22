@@ -183,7 +183,22 @@
 	<script src="../js/jquery.kinetic.js" type="text/javascript"></script>
 
 	<script>
+		
+		 function bindOrientationChange(){
+			// Prefer the Screen Orientation API when available; fall back to the
+			// legacy window event for older browsers.
+			if (window.screen && screen.orientation && screen.orientation.addEventListener) {
+					screen.orientation.addEventListener('change', applyOrientationLayout);
+			}
+
+			window.addEventListener('orientationchange', applyOrientationLayout);
+		}
+		
 		$(document).ready(function () {
+			
+			// Orientation change handling is bound here, so no inline
+            // onorientationchange attribute is required on <body>.
+            bindOrientationChange();
 			
 			var is_mobile = false;
 			
@@ -226,7 +241,8 @@
 				*/
 			}
 			
-		});	
+		});
+
 	</script>
 
 </body>
