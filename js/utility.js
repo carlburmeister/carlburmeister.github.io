@@ -553,7 +553,15 @@ function updateOrientation(){
 }
 */
 function applyOrientationLayout() {
-    var window_height = $(window).height();
+    
+	var el = '';
+	var el_str = getCurrentVisibleElement();
+	if(el_str.split('_')[0] === 'detail')
+		el = 'detail';
+	else 
+		el = el_str;
+	
+	var window_height = $(window).height();
     var window_width = $(window).width();
     var imageBlockHeight = $('#imageBlock').height();
 
